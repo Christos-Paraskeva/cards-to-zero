@@ -1,3 +1,5 @@
+import { Card } from '../../src/models/Card';
+
 export class Deck {
     public names: string[];
     public colours: string[];
@@ -10,4 +12,21 @@ export class Deck {
       this.cards = [];
     }
 
+    public createDeck(type) {
+      if (type === 'standard') {
+      let positionInDeck = 1;
+
+      for(let s = 0; s < this.colours.length; s++) {
+        for(let v = 0; v < this.names.length; v++) {
+          this.cards.push( new Card( v+1, this.names[v], this.colours[s], positionInDeck ) );
+          positionInDeck += 1;
+        }
+      }
+      return this.cards;
+    }
+    else {
+      throw new Error("Must specify valid deck type");
+    }
+  }
+  
 }
