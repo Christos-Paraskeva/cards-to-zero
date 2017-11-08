@@ -48,5 +48,6 @@ describe("Player", () => {
     let player = new Player(1, 'Test Name');
     let playerTwo = player.createPlayer(2, 'Player Two');
     expect(playerTwo).to.be.an.instanceof(Player);
+    expect(playerTwo.name).to.equal('Player Two');
   });
 });
