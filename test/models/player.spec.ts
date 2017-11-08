@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { Player } from '../../src/models/player';
+import { Player } from '../../src/models/Player';
 
 describe("Player", () => {
   let player = new Player(1, 'Test Name');

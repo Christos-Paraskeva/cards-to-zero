@@ -1,9 +1,8 @@
 import { expect } from 'chai';
-import { Card } from '../../src/models/card';
+import { Card } from '../../src/models/Card';
 
 describe("Card", () => {
   let card = new Card(0, "Zero", "Red", 1);
-  console.log(card);
 
   it("exists", () => {
     expect(card).not.to.be.undefined;
