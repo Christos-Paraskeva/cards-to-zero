@@ -25,8 +25,8 @@ export class Deck {
       return this.cards;
     }
     else {
-      throw new Error("Must specify valid deck type");
+      throw "Must specify valid deck type";
     }
   }
-  
+
 }

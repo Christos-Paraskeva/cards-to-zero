@@ -48,7 +48,7 @@ describe("Deck", () => {
     });
 
     // it("correct number of cards are created", function() {
-    //   expect(formattedDeck.length).toEqual(formatArrayStructure(correctSequenceDeck()).length);
+    //   expect(formattedDeck.length).to.equal(formatArrayStructure(correctSequenceDeck()).length);
     // });
 
     // it("the desired sequence of cards are in correct order", function() {
@@ -56,10 +56,12 @@ describe("Deck", () => {
     // });
   });
 
-  // describe('edge cases', function() {
-  //
-  //   it("throws an error a if valid type of deck isn't specified", function() {
-  //     expect(deck.createDeck.bind(null)).to.throw(new Error("Must specify valid deck type"));
-  //   });
-  // });
+  // this test gives an error when specifying what it is expected to throw
+  describe('edge cases', function() {
+    it("throws an error a if valid type of deck isn't specified", () => {
+      // const error = new Error("Must specify valid deck type");
+      // console.log(error);
+      expect(deck.createDeck.bind(null)).to.throw("Must specify valid deck type");
+    });
+  });
 });
