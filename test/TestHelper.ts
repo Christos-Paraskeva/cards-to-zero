@@ -1,13 +1,15 @@
 export module TestHelper {
-    export function cardNames() {
+    export function cardNames():Array<string> {
       return ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Skip Go', '+2', '+4', 'Choose Colour'];
     }
 
-    export function colours() {
+    export function colours():Array<string> {
       return ['Red','Blue','Yellow','Green'];
     }
 
-    export function formatArrayStructure(deck) {
+    // need to use an interface here?
+    // added "suppressImplicitAnyIndexErrors": true / instead to suppress error
+    export function formatArrayStructure(deck:Array<any>):Array<object> {
       let formattedDeck = [];
 
       if (formattedDeck.length === 0) {

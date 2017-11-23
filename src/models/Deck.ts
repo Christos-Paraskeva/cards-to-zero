@@ -12,7 +12,7 @@ export class Deck {
       this.cards = [];
     }
 
-    public createDeck(type) {
+    public createDeck(type: string):Array<object> {
       if (type === 'standard') {
       let positionInDeck = 1;
 

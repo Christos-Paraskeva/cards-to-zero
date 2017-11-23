@@ -8,19 +8,19 @@ export class Player {
                                                    this.cardsHeld = [];
                                                  }
 
-    public getId() {
+    public getId():number {
       return this.id;
     }
 
-    public getName() {
+    public getName():string {
       return this.name;
     }
 
-    public showCards() {
+    public showCards():Array<object> {
       return this.cardsHeld;
     }
 
-    public createPlayer(id, name) {
+    public createPlayer(id: number, name: string):Player {
       return new Player(id, name);
     }
 }

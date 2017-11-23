@@ -21,6 +21,9 @@ describe("Game", () => {
   });
 
   describe("Can", () => {
+    it("get the current direction of play", () => {
+      expect(game.getCurrentDirectionOfPlay()).to.equal('clockwise');
+    });
     it("reverse the current direction of play", () => {
       game.reverseCurrentDirection();
       expect(game.directionOfPlay).to.equal('anti-clockwise');

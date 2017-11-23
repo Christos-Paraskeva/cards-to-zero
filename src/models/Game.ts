@@ -16,4 +16,8 @@ export class Game {
     }
   }
 
+  public getCurrentDirectionOfPlay():string {
+    return this.directionOfPlay;
+  }
+
 }

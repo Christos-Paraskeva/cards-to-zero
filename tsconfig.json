@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "allowJs": true,
+    "noImplicitAny": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "outDir": "js-converted",
+    "sourceMap": false,
+    "lib": ["ES6"],
+    "target": "es6"
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.js",
+    "**/*.spec.ts"
+  ]
+}
