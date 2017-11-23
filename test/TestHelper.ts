@@ -22,6 +22,13 @@ export module TestHelper {
 
       return formattedDeck;
     }
+
+    export function minimizedTestDeck():Array<object> {
+      return [ Object({ value: 1, name: 'Ace', suit: 'Hearts', originalDeckPosition: 1 }),
+               Object({ value: 2, name: 'Two', suit: 'Hearts', originalDeckPosition: 2 }),
+               Object({ value: 3, name: 'Three', suit: 'Hearts', originalDeckPosition: 3 })
+             ];
+    }
 }
 
 // let cardNames = function() {

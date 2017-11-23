@@ -8,7 +8,7 @@
     "preserveConstEnums": true,
     "outDir": "js-converted",
     "sourceMap": false,
-    "lib": ["ES6"],
+    "lib": ["ES6", "dom"],
     "target": "es6"
   },
   "include": [
