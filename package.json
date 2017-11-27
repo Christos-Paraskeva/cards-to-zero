@@ -7,15 +7,16 @@
     "test": "test"
   },
   "dependencies": {
-    "chai": "^4.1.2",
     "ts-node": "^3.3.0",
     "typescript": "^2.6.1"
   },
   "devDependencies": {
     "@types/chai": "^4.0.4",
     "@types/mocha": "^2.2.44",
+    "@types/sinon-chai": "^2.7.29",
     "chai": "^4.1.2",
     "mocha": "^4.0.1",
+    "sinon": "^4.1.2",
     "ts-node": "^3.3.0"
   },
   "scripts": {

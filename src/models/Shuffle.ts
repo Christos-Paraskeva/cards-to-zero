@@ -1,6 +1,11 @@
-interface DeckStructure {
-  length: number;
-  // originalDeckPosition: number
+import { DeckStructure } from '../../src/models/Deck';
+
+
+export interface ShuffleStructure {
+    new (): Shuffle;
+    // correctShuffle(deck:DeckStructure): boolean;
+    defaultShuffle(deck:DeckStructure): Array<object>;
+    // _validateCorrectShuffle(flag: any):void
 }
 
 export class Shuffle {

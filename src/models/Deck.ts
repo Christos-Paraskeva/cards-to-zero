@@ -1,5 +1,10 @@
 import { Card } from '../../src/models/Card';
 
+export interface DeckStructure {
+  length: number;
+  // originalDeckPosition: number
+}
+
 export class Deck {
     public names: string[];
     public colours: string[];
