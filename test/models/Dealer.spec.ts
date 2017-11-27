@@ -1,4 +1,3 @@
-// import { expect } from 'chai';
 import * as chai from 'chai';
 import * as sinon from "sinon";
 import * as sinonChai from 'sinon-chai';
@@ -23,27 +22,14 @@ export class PlayerDouble {
       this.cardsHeld = [];
     }
 }
-//
+
 let currentPlayersDouble:iPlayer[] = [];
-//
+
 currentPlayersDouble.push(new PlayerDouble(1, 'Player1'),
   new PlayerDouble(2, 'Player2'),
   new PlayerDouble(3, 'Player3'),
   new PlayerDouble(4, 'Player4')
 );
-//
-// class ShuffleDouble {
-//   public correctShuffle: boolean;
-//
-//   public constructor()
-//   { this.correctShuffle = false;
-//
-//   }
-//
-//   public defaultShuffle(deck:Array<any>):void {
-//      deck.push('test');
-//   }
-// }
 
 
 describe("Dealer", () => {
@@ -57,46 +43,38 @@ describe("Dealer", () => {
 
   describe("Is initialized with", () => {
     it("array for the current players", () => {
-      // console.log(dealer.currentPlayers);
       expect(dealer.currentPlayers).not.to.be.undefined;
     });
 
     it("an instance of 'Shuffle'", () => {
-      // console.log(dealer);
       expect(dealer.shuffle).to.be.an.instanceof(Shuffle);
     });
-  //
-  //   it("a colour", () => {
-  //     expect(card.colour).to.equal('Red');
-  //   });
-  //
-  //   it("an original deck position", () => {
-  //     expect(card.originalDeckPosition).to.equal(1);
-  //   });
-  // });
-    describe("when shuffling the cards", () => {
-      it("calls the shuffle class and gives it the cards", () => {
-        const shuffleDeckSpy = sinon.spy(dealer.shuffle, "defaultShuffle");
-        dealer.shuffleTheDeck(TestHelper.minimizedTestDeck());
-        expect(shuffleDeckSpy).to.have.been.called;
-      });
-    });
+  });
 
-    describe("when dealing the cards", () => {
-      it("gives each player the correct amount of cards specified", () => {
-        dealer.dealTheCards(7, currentPlayersDouble, TestHelper.dealerTestDeck());
-        console.log(dealer.currentPlayers[0].cardsHeld[0]);
-        console.log(dealer.currentPlayers[1].cardsHeld[0]);
-        console.log(dealer.currentPlayers[2].cardsHeld[0]);
-        console.log(dealer.currentPlayers[3].cardsHeld[0]);
-
-        expect(dealer.currentPlayers[0].cardsHeld.length).to.equal(7);
-        expect(dealer.currentPlayers[1].cardsHeld.length).to.equal(7);
-        expect(dealer.currentPlayers[2].cardsHeld.length).to.equal(7);
-        expect(dealer.currentPlayers[3].cardsHeld.length).to.equal(7);
-      });
+  describe("When shuffling the cards", () => {
+    it("calls the shuffle class and gives it the cards", () => {
+      const shuffleDeckSpy = sinon.spy(dealer.shuffle, "defaultShuffle");
+      dealer.shuffleTheDeck(TestHelper.minimizedTestDeck());
+      expect(shuffleDeckSpy).to.have.been.called;
     });
   });
+
+  describe("When dealing the cards", () => {
+    it("gives each player the correct amount of cards specified", () => {
+      dealer.dealTheCards(7, currentPlayersDouble, TestHelper.dealerTestDeck());
+      expect(dealer.currentPlayers[0].cardsHeld.length).to.equal(7);
+      expect(dealer.currentPlayers[1].cardsHeld.length).to.equal(7);
+      expect(dealer.currentPlayers[2].cardsHeld.length).to.equal(7);
+      expect(dealer.currentPlayers[3].cardsHeld.length).to.equal(7);
+      });
+    });
+
+  describe("Edge cases", () => {
+    it("throws an error when there are not enough cards to be dealt to the players", () => {
+      expect(function () { dealer.dealTheCards(14, currentPlayersDouble, TestHelper.dealerTestDeck()) }).to.throw("Cannot deal: not enough cards or players");
+    });
+  });
+});
 
 //   describe('when dealing the cards', function() {
 //
@@ -185,4 +163,3 @@ describe("Dealer", () => {
 //       });
 //     });
 //   });
-});

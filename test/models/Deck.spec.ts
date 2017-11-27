@@ -53,7 +53,7 @@ describe("Deck", () => {
   });
 
   // this test gives an error when specifying what it is expected to throw
-  describe('edge cases', function() {
+  describe('Edge cases', function() {
     it("throws an error a if valid type of deck isn't specified", () => {
       // const error = new Error("Must specify valid deck type");
       // console.log(error);

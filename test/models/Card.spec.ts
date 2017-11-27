@@ -10,10 +10,6 @@ describe("Card", () => {
   });
 
   describe("Is initialized with", () => {
-    // it("a value", () => {
-    //   expect(card.value).to.equal(0);
-    // });
-
     it("a name", () => {
       expect(card.name).to.equal('Zero');
     });
