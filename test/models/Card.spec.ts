@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import { Card } from '../../src/models/Card';
 
 describe("Card", () => {
-  let card = new Card(0, "Zero", "Red", 1);
+  let card = new Card("Zero", "Red", 1);
 
   it("exists", () => {
     expect(card).not.to.be.undefined;
@@ -10,9 +10,9 @@ describe("Card", () => {
   });
 
   describe("Is initialized with", () => {
-    it("a value", () => {
-      expect(card.value).to.equal(0);
-    });
+    // it("a value", () => {
+    //   expect(card.value).to.equal(0);
+    // });
 
     it("a name", () => {
       expect(card.name).to.equal('Zero');

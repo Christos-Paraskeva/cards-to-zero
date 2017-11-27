@@ -1,28 +1,36 @@
-import { expect } from 'chai';
+// import { expect } from 'chai';
+import * as chai from 'chai';
 import * as sinon from "sinon";
+import * as sinonChai from 'sinon-chai';
 import { Dealer } from '../../src/models/Dealer';
-// import { ShuffleStructure } from '../../src/models/Shuffle';
 import { Shuffle } from '../../src/models/Shuffle';
+import { Card } from '../../src/models/Card';
+import { iPlayer } from '../../src/models/Player';
 
-// export class PlayerDouble {
-//     public id: number;
-//     public name: string;
-//     public cardsHeld: object[];
+import { TestHelper } from '../TestHelper';
+
+chai.use(sinonChai);
+const expect = chai.expect;
+
+export class PlayerDouble {
+    public id: number;
+    public name: string;
+    public cardsHeld: Card[];
+
+    public constructor(id: number, name: string)
+    { this.id = id;
+      this.name = name;
+      this.cardsHeld = [];
+    }
+}
 //
-//     public constructor(id: number, name: string)
-//     { this.id = id;
-//       this.name = name;
-//       this.cardsHeld = [];
-//     }
-// }
+let currentPlayersDouble:iPlayer[] = [];
 //
-// let currentPlayersDouble:object[] = [];
-//
-// currentPlayersDouble.push(new PlayerDouble(1, 'Player1'),
-//   new PlayerDouble(2, 'Player2'),
-//   new PlayerDouble(3, 'Player3'),
-//   new PlayerDouble(4, 'Player4')
-// );
+currentPlayersDouble.push(new PlayerDouble(1, 'Player1'),
+  new PlayerDouble(2, 'Player2'),
+  new PlayerDouble(3, 'Player3'),
+  new PlayerDouble(4, 'Player4')
+);
 //
 // class ShuffleDouble {
 //   public correctShuffle: boolean;
@@ -49,12 +57,12 @@ describe("Dealer", () => {
 
   describe("Is initialized with", () => {
     it("array for the current players", () => {
-      console.log(dealer.currentPlayers);
+      // console.log(dealer.currentPlayers);
       expect(dealer.currentPlayers).not.to.be.undefined;
     });
 
     it("an instance of 'Shuffle'", () => {
-      console.log(dealer);
+      // console.log(dealer);
       expect(dealer.shuffle).to.be.an.instanceof(Shuffle);
     });
   //
@@ -66,7 +74,48 @@ describe("Dealer", () => {
   //     expect(card.originalDeckPosition).to.equal(1);
   //   });
   // });
-});
+    describe("when shuffling the cards", () => {
+      it("calls the shuffle class and gives it the cards", () => {
+        const shuffleDeckSpy = sinon.spy(dealer.shuffle, "defaultShuffle");
+        dealer.shuffleTheDeck(TestHelper.minimizedTestDeck());
+        expect(shuffleDeckSpy).to.have.been.called;
+      });
+    });
+
+    describe("when dealing the cards", () => {
+      it("gives each player the correct amount of cards specified", () => {
+        dealer.dealTheCards(7, currentPlayersDouble, TestHelper.dealerTestDeck());
+        console.log(dealer.currentPlayers[0].cardsHeld[0]);
+        console.log(dealer.currentPlayers[1].cardsHeld[0]);
+        console.log(dealer.currentPlayers[2].cardsHeld[0]);
+        console.log(dealer.currentPlayers[3].cardsHeld[0]);
+
+        expect(dealer.currentPlayers[0].cardsHeld.length).to.equal(7);
+        expect(dealer.currentPlayers[1].cardsHeld.length).to.equal(7);
+        expect(dealer.currentPlayers[2].cardsHeld.length).to.equal(7);
+        expect(dealer.currentPlayers[3].cardsHeld.length).to.equal(7);
+      });
+    });
+  });
+
+//   describe('when dealing the cards', function() {
+//
+//     it("gives each player the correct amount of cards specified", function() {
+//       dealer.dealTheCards(7, currentPlayersDouble, correctSequenceDeck());
+//       expect(dealer.currentPlayers[0].cardsHeld.length).toEqual(7);
+//       expect(dealer.currentPlayers[1].cardsHeld.length).toEqual(7);
+//       expect(dealer.currentPlayers[2].cardsHeld.length).toEqual(7);
+//       expect(dealer.currentPlayers[3].cardsHeld.length).toEqual(7);
+//     });
+
+// describe('when shuffling the cards', function() {
+//
+//     it("calls the shuffle class and gives it the cards", function() {
+//       var shuffleDeckSpy = spyOn(dealer.shuffle, 'defaultShuffle').and.callThrough();
+//       dealer.shuffleTheDeck(correctSequenceDeck());
+//       expect(shuffleDeckSpy).toHaveBeenCalled();
+//     });
+//   });
 
 
 // function PlayerDouble(id, name) {

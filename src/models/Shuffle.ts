@@ -1,10 +1,10 @@
-import { DeckStructure } from '../../src/models/Deck';
+import { iDeck } from '../../src/models/Deck';
 
 
-export interface ShuffleStructure {
+export interface iShuffle {
     new (): Shuffle;
     // correctShuffle(deck:DeckStructure): boolean;
-    defaultShuffle(deck:DeckStructure): Array<object>;
+    defaultShuffle(deck:iDeck): Array<object>;
     // _validateCorrectShuffle(flag: any):void
 }
 
@@ -18,7 +18,7 @@ export class Shuffle {
 
 
 
-    public defaultShuffle(deck:DeckStructure):DeckStructure {
+    public defaultShuffle(deck:iDeck):iDeck {
       let i = 0;
       let r = 0;
       let temp = null;
@@ -39,7 +39,7 @@ export class Shuffle {
       }
     }
 
-    private _validateCorrectShuffle(deck:DeckStructure):void {
+    private _validateCorrectShuffle(deck:iDeck):void {
       let confirmedCardSequence = false;
       let i = 0;
 

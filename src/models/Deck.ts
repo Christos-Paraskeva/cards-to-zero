@@ -1,8 +1,13 @@
 import { Card } from '../../src/models/Card';
+import { iCard } from '../../src/models/Card';
 
-export interface DeckStructure {
+
+export interface iDeck {
   length: number;
-  // originalDeckPosition: number
+  splice: any;
+  // names:Array<string>;
+  // colours:Array<string>;
+  cards:Array<iCard>;
 }
 
 export class Deck {
@@ -23,7 +28,7 @@ export class Deck {
 
       for(let s = 0; s < this.colours.length; s++) {
         for(let v = 0; v < this.names.length; v++) {
-          this.cards.push( new Card( v+1, this.names[v], this.colours[s], positionInDeck ) );
+          this.cards.push( new Card( this.names[v], this.colours[s], positionInDeck ) );
           positionInDeck += 1;
         }
       }

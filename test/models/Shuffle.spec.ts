@@ -20,6 +20,7 @@ describe("Shuffle", () => {
 
       it("the default shuffle method does not return any two cards in sequence", () => {
         let shuffledCards = shuffle.defaultShuffle(testDeck);
+        // console.log(shuffledCards);
         expect(shuffledCards).not.to.eql(undefined);
         expect(shuffledCards).not.to.eql([ Object({ value: 1, name: 'Ace', suit: 'Hearts', originalDeckPosition: 1 }), Object({ value: 2, name: 'Two', suit: 'Hearts', originalDeckPosition: 2 }), Object({ value: 3, name: 'Three', suit: 'Hearts', originalDeckPosition: 3 }) ]);
         expect(shuffledCards).not.to.eql([ Object({ value: 2, name: 'Two', suit: 'Hearts', originalDeckPosition: 2 }), Object({ value: 3, name: 'Three', suit: 'Hearts', originalDeckPosition: 3 }), Object({ value: 1, name: 'Ace', suit: 'Hearts', originalDeckPosition: 1 }) ]);

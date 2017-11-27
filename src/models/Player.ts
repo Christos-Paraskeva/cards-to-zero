@@ -1,3 +1,13 @@
+import { Card } from '../../src/models/Card';
+
+
+export interface iPlayer {
+    // new (): Player;
+    // correctShuffle(deck:DeckStructure): boolean;
+    cardsHeld:Array<Card>;
+    // _validateCorrectShuffle(flag: any):void
+}
+
 export class Player {
     public id: number;
     public name: string;

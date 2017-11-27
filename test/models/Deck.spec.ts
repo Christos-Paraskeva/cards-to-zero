@@ -31,19 +31,22 @@ describe("Deck", () => {
       formattedDeck = TestHelper.formatArrayStructure(deck.createDeck('standard'));
     });
 
-    it("card value is defined", () => {
-      expect(formattedDeck[0][2]).not.to.be.undefined;
-    });
+    // it("card value is defined", () => {
+    //   expect(formattedDeck[0][2]).not.to.be.undefined;
+    // });
 
     it("card name is defined", () => {
-      expect(formattedDeck[0][0]).not.to.be.undefined;
-    });
-
-    it("card colour type is defined", () => {
+      // console.log(formattedDeck[0][1])
       expect(formattedDeck[0][1]).not.to.be.undefined;
     });
 
+    it("card colour type is defined", () => {
+      // console.log(formattedDeck[0][2])
+      expect(formattedDeck[0][2]).not.to.be.undefined;
+    });
+
     it("original deck position of card is defined", () => {
+      // console.log(formattedDeck[0][3])
       expect(formattedDeck[0][3]).not.to.be.undefined;
     });
 
