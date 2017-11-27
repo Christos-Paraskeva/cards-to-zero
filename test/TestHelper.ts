@@ -12,13 +12,13 @@ export module TestHelper {
 
     // need to use an interface here?
     // added "suppressImplicitAnyIndexErrors": true / instead to suppress error
-    export function formatArrayStructure(deck:iDeck):Array<object> {
+    export function formatArrayStructure(deck:any):Array<object> {
       let formattedDeck = [];
 
       if (formattedDeck.length === 0) {
         for (let i = 0; i < deck.length; i++) {
           if (formattedDeck.length < 56) {
-            formattedDeck.push( [deck[i].value, deck[i].name, deck[i].colour, deck[i].originalDeckPosition ]);
+            formattedDeck.push( [deck[i].name, deck[i].colour, deck[i].originalDeckPosition ]);
           }
         }
       }
