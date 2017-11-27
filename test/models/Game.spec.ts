@@ -21,12 +21,31 @@ describe("Game", () => {
   });
 
   describe("Can", () => {
+
+    beforeEach(() => {
+      game = new Game();
+    });
+
     it("get the current direction of play", () => {
       expect(game.getCurrentDirectionOfPlay()).to.equal('clockwise');
     });
+
     it("reverse the current direction of play", () => {
       game.reverseCurrentDirection();
       expect(game.directionOfPlay).to.equal('anti-clockwise');
+    });
+
+    it("goes to the next player after the 'endCurrentTurn' function is called", () => {
+      console.log(game.directionOfPlay);
+      console.log(game.currentPlayerTurn);
+      game.endCurrentTurn();
+      expect(game.currentPlayerTurn).to.equal(1);
+    });
+
+    it("display which player's turn it is", () => {
+      game.endCurrentTurn();
+      game.endCurrentTurn();
+      expect(game.currentPlayerTurn).to.equal(2);
     });
   });
 });

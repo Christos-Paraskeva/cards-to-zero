@@ -20,4 +20,12 @@ export class Game {
     return this.directionOfPlay;
   }
 
+  public endCurrentTurn():void {
+    if (this.directionOfPlay === "clockwise") {
+      this.currentPlayerTurn = (this.currentPlayerTurn + 1);
+    } else if (this.directionOfPlay === "anti-clockwise") {
+      this.currentPlayerTurn = (this.currentPlayerTurn - 1);
+    }
+  }
+
 }
