@@ -1,5 +1,6 @@
 import { expect } from 'chai';
 import { Game } from '../../src/models/Game';
+import { Card } from '../../src/models/Card';
 import { TestHelper } from '../TestHelper';
 
 describe("Game", () => {
@@ -17,6 +18,14 @@ describe("Game", () => {
 
     it("a directionOfPlay property set to clockwise by default", () => {
       expect(game.directionOfPlay).to.equal('clockwise');
+    });
+
+    it("a current card in play set to null by default", () => {
+      expect(game.currentCardInPlay).to.not.be.undefined;
+    });
+
+    it("a boolean value for whether the game is currently active or not", () => {
+      expect(game.activeGame).to.equal(false);
     });
   });
 
@@ -36,8 +45,6 @@ describe("Game", () => {
     });
 
     it("goes to the next player after the 'endCurrentTurn' function is called", () => {
-      console.log(game.directionOfPlay);
-      console.log(game.currentPlayerTurn);
       game.endCurrentTurn();
       expect(game.currentPlayerTurn).to.equal(1);
     });
@@ -46,6 +53,22 @@ describe("Game", () => {
       game.endCurrentTurn();
       game.endCurrentTurn();
       expect(game.currentPlayerTurn).to.equal(2);
+    });
+
+    it("display which player is the next turn", () => {
+      expect(game.checkNextPlayerTurn()).to.equal(1);
+    });
+
+    it("puts a first card down from the deck", () => {
+      let deck = TestHelper.dealerTestDeck();
+      game.setFirstCard(deck);
+      expect(game.currentCardInPlay).to.equal(deck[0]);
+    });
+
+    it("set a card as the current card in play", () => {
+      let card = new Card('Three', 'Red', 4);
+      game.setCurrentCard(card);
+      expect(game.currentCardInPlay).to.equal(card);
     });
   });
 });
