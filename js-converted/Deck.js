@@ -12,7 +12,7 @@ class Deck {
             let positionInDeck = 1;
             for (let s = 0; s < this.colours.length; s++) {
                 for (let v = 0; v < this.names.length; v++) {
-                    this.cards.push(new Card_1.Card(v + 1, this.names[v], this.colours[s], positionInDeck));
+                    this.cards.push(new Card_1.Card(this.names[v], this.colours[s], positionInDeck));
                     positionInDeck += 1;
                 }
             }

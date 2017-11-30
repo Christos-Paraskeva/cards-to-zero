@@ -1,4 +1,5 @@
 export interface iCard {
+  // new (name: string, colour: string, originalDeckPosition: number): Card;
   name: string;
   colour: string;
   originalDeckPosition: number;

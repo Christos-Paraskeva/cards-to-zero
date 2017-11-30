@@ -1,22 +1,23 @@
-import { Card } from '../../src/models/Card';
+import { iCard } from '../../src/models/Card';
 
 
 export interface iPlayer {
     // new (): Player;
-    // correctShuffle(deck:DeckStructure): boolean;
-    cardsHeld:Array<Card>;
-    // _validateCorrectShuffle(flag: any):void
+    id: number
+    name: string
+    cardsHeld:iCard[];
 }
 
 export class Player {
     public id: number;
     public name: string;
-    public cardsHeld: object[];
+    public cardsHeld: iCard[];
 
-    public constructor(id: number, name: string) { this.id = id;
-                                                   this.name = name;
-                                                   this.cardsHeld = [];
-                                                 }
+    public constructor(id: number, name: string)
+    { this.id = id;
+      this.name = name;
+      this.cardsHeld = [];
+    }
 
     public getId():number {
       return this.id;
@@ -26,11 +27,11 @@ export class Player {
       return this.name;
     }
 
-    public showCards():Array<object> {
+    public showCards():iCard[] {
       return this.cardsHeld;
     }
 
-    public createPlayer(id: number, name: string):Player {
+    public createPlayer(id: number, name: string):iPlayer {
       return new Player(id, name);
     }
 }

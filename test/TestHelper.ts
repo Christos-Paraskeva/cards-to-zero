@@ -1,5 +1,7 @@
 // import { iDeck } from '../src/models/Deck';
-
+import { Player } from '../src/models/Player';
+import { Card } from '../src/models/Card';
+import { iPlayer } from '../src/models/Player';
 
 export module TestHelper {
     export function cardNames():Array<string> {
@@ -67,6 +69,16 @@ export module TestHelper {
                Object({ originalDeckPosition: 31 }),
                Object({ originalDeckPosition: 32 }),
              ];
+    }
+
+    export function currentPlayersTest():Array<iPlayer> {
+        let playerOne = new Player(1, 'Test Name');
+        let playerTwo = new Player(2, 'Test Name 2');
+        // playerOne.cardsHeld.push(new Card("Zero", "Red", 1));
+        playerTwo.cardsHeld.push(new Card("One", "Red", 2), new Card("Two", "Red", 3));
+        let currentPlayers = [];
+        currentPlayers.push(playerOne, playerTwo);
+        return currentPlayers;
     }
 }
 

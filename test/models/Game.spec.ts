@@ -1,10 +1,18 @@
 import { expect } from 'chai';
 import { Game } from '../../src/models/Game';
 import { Card } from '../../src/models/Card';
+// import { Player } from '../../src/models/Player';
+import { iPlayer } from '../../src/models/Player';
 import { TestHelper } from '../TestHelper';
 
 describe("Game", () => {
-  let game = new Game();
+  let game: Game;
+  let currentPlayers: iPlayer[] = [];
+
+  beforeEach(() => {
+    currentPlayers = TestHelper.currentPlayersTest()
+    game = new Game(currentPlayers);
+  });
 
   it("exists", () => {
     expect(game).not.to.be.undefined;
@@ -12,6 +20,10 @@ describe("Game", () => {
   });
 
   describe("Is initialized with", () => {
+    it("the current players", () => {
+      expect(game.currentPlayers).to.equal(currentPlayers);
+    });
+
     it("a currentPlayerTurn property set to 0 by default", () => {
       expect(game.currentPlayerTurn).to.equal(0);
     });
@@ -25,15 +37,15 @@ describe("Game", () => {
     });
 
     it("a boolean value for whether the game is currently active or not", () => {
-      expect(game.activeGame).to.equal(false);
+      expect(game.activeGame).to.equal(true);
+    });
+
+    it("a value for the previous game winner set to null by default", () => {
+      expect(game.previousWinner).to.equal(null);
     });
   });
 
   describe("Can", () => {
-
-    beforeEach(() => {
-      game = new Game();
-    });
 
     it("get the current direction of play", () => {
       expect(game.getCurrentDirectionOfPlay()).to.equal('clockwise');
@@ -56,7 +68,7 @@ describe("Game", () => {
     });
 
     it("display which player is the next turn", () => {
-      expect(game.checkNextPlayerTurn()).to.equal(1);
+      expect(game.calculateWhichPlayerTurnNext()).to.equal(1);
     });
 
     it("puts a first card down from the deck", () => {
@@ -69,6 +81,20 @@ describe("Game", () => {
       let card = new Card('Three', 'Red', 4);
       game.setCurrentCard(card);
       expect(game.currentCardInPlay).to.equal(card);
+    });
+
+    it("check if a player has won if they have no cards and sets them as previous winner", () => {
+      let player = game.currentPlayers[0];
+      game.checkIfWon(player);
+      expect(game.previousWinner).to.equal(player.id);
+      expect(game.activeGame).to.equal(false);
+    });
+
+    it("check if a player has won if they still have cards left and does not set them as previous winner", () => {
+      let player = game.currentPlayers[1];
+      game.checkIfWon(player);
+      expect(game.previousWinner).to.equal(null);
+      expect(game.activeGame).to.equal(true);
     });
   });
 });
